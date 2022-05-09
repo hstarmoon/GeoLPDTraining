@@ -1,0 +1,5 @@
+classes= 1
+train  = /root/workspace/GeoLPDTraining-master/test_LPD/train.txt
+valid  = /root/workspace/GeoLPDTraining-master/test_LPD/test.txt
+names = configs/LPD.name
+backup = model/

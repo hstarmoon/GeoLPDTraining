@@ -1,0 +1,65 @@
+# Geo LPD training
+
+This repository contains LPD and TD training code.
+
+## Installation
+
+### Option 1: Step-by-step installation
+```bash
+  # first, make sure that your conda is setup properly with the right environment
+  # for that, check that `which conda`, `which pip` and `which python` points to the
+  # right path. From a clean conda env, this is what you need to do
+
+  conda create --name geoLPD -y python=3.6
+  conda activate geoLPD
+
+  # this installs the right pip and dependencies for the fresh python
+  conda install ipython pip
+
+  # clone repo
+  git clone https://github.com/olala313/GeoLPDTraining.git
+  cd GeoLPDTraining/
+  
+  # Create environment and build:
+  bash init_venv.sh
+
+
+```
+
+### Data prepare
+
+To clean data ,run the command:
+
+```bash
+
+python3 tools/geo_data_clean.py --data_dir /root/data/ --output_dir /root/workspace/GeoLPDTraining-master/test_o/
+
+python tools/geo_data_clean.py --data_dir D:\data\Myanmar\Myanmar_backup/ --output_dir D:\data\Myanmar\test_clean/
+```
+and convert LPD data, run the command:
+```bash
+python3 LPD/tools/geo2LPD.py --data_dir "test_o/" --output_dir "test_LPD/" --offset 25
+python3 TD/tools/geo2TD.py --data_dir "test_o/" --output_dir "test_TD/" --offset 30
+python TD/tools/geo2TD_new.py --data_dir "test_o/" --output_dir "test_TD/" --offset 20
+```
+get pre-train model
+```
+bash tools/download_pretrain.sh
+```
+
+### Training
+```cd LPD``` or ```cd TD```
+
+Content of the file `/configs/LPD.data` should be
+```
+train  = <replace with your path>/train.txt
+valid = <replace with your path>/test.txt
+```
+Make anchors to cfg:
+```
+bash tools/make_config.sh
+```
+training
+```
+bash tools/train.sh
+```

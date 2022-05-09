@@ -1,0 +1,1 @@
+../external/darknet/darknet detector train configs/TD.data configs/TD.cfg ../tools/yolov3-tiny.conv.15 -clear -dont_show -gpus 3 3>&1 | tee model/train.log

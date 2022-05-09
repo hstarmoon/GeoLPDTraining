@@ -1,0 +1,5 @@
+classes= 4
+train  = /root/workspace/GeoLPDTraining-master/test_TD/train.txt
+valid  = /root/workspace/GeoLPDTraining-master/test_TD/test.txt
+names = configs/TD.name
+backup = model/
